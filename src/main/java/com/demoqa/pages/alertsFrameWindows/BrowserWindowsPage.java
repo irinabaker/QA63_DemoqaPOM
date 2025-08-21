@@ -1,4 +1,4 @@
-package com.demoqa.pages.aletsFrameWindows;
+package com.demoqa.pages.alertsFrameWindows;
 
 import com.demoqa.core.BasePage;
 import org.junit.jupiter.api.Assertions;

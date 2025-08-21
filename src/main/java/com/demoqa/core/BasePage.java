@@ -1,5 +1,6 @@
 package com.demoqa.core;
 
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,11 +15,13 @@ public class BasePage {
 
     protected WebDriver driver;
     JavascriptExecutor js;
+    public static SoftAssertions softly;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
         js = (JavascriptExecutor) driver;
+        softly = new SoftAssertions();
     }
 
     public void scrollWithJS(int x, int y) {
@@ -52,7 +55,7 @@ public class BasePage {
     }
 
     public boolean isAlertPresent(int time) {
-        Alert alert = new WebDriverWait(driver, Duration.ofSeconds(time))
+        Alert alert = getWait(time)
                 .until(ExpectedConditions.alertIsPresent());
         if (alert == null) {
             return false;
@@ -60,6 +63,15 @@ public class BasePage {
             alert.accept();
             return true;
         }
+    }
+
+    public boolean shouldHaveText(WebElement element, String text, int time) {
+        return getWait(time)
+                .until(ExpectedConditions.textToBePresentInElement(element,text));
+    }
+
+    public WebDriverWait getWait(int time) {
+        return new WebDriverWait(driver, Duration.ofSeconds(time));
     }
 
 }
