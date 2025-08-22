@@ -54,4 +54,12 @@ public class SelectMenuPage extends BasePage {
         softly.assertAll();
         return this;
     }
+
+    public SelectMenuPage verifySelectedCar(String car,String color) {
+        WebElement selectedCar = driver.findElement(By.cssSelector("[value='" + car + "']"));
+        click(selectedCar);
+        //System.out.println(selectedCar.getCssValue("background-color"));
+        Assertions.assertTrue(selectedCar.getCssValue("background-color").contains(color));
+        return this;
+    }
 }

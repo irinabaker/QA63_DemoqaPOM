@@ -26,9 +26,13 @@ public class SelectMenuTests extends TestBase {
 
     @Test
     public void multiSelectDropDownTest() {
-        selectMenu.multiSelectDropDown(new String[]{"Green","Red"})
-                .verifyMultiSelect(new String[]{"Green","Red"});
+        selectMenu.multiSelectDropDown(new String[]{"Green", "Red"})
+                .verifyMultiSelect(new String[]{"Green", "Red"});
     }
 
+    @Test
+    public void standardMultiSelectTest() {
+        selectMenu.verifySelectedCar("opel","rgba(223, 197, 224, 1)");
+    }
 
 }
