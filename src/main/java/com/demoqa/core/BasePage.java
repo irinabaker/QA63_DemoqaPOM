@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 
 public class BasePage {
@@ -95,6 +98,24 @@ public class BasePage {
     public void waitAndScroll(int millis, int x, int y) {
         pause(millis);
         scrollWithJS(x, y);
+    }
+
+    public void verifyLinks(String url) {
+
+        try {
+            URL linkUrl = new URL(url);
+            //create URL connection and get response code
+            HttpURLConnection connection = (HttpURLConnection) linkUrl.openConnection();
+            connection.setConnectTimeout(5000);
+            connection.connect();
+            if (connection.getResponseCode()>=400) {
+                System.out.println(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
+            } else {
+                System.out.println(url + " - " + connection.getResponseMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(url + " - " + e.getMessage() + " ERROR occurred");
+        }
     }
 }
 

@@ -6,6 +6,10 @@ import com.demoqa.pages.alertsFrameWindows.BrowserWindowsPage;
 import com.demoqa.pages.alertsFrameWindows.IframePage;
 import com.demoqa.pages.alertsFrameWindows.NestedIframesPage;
 import com.demoqa.pages.bookstore.LoginPage;
+import com.demoqa.pages.elements.ButtonsPage;
+import com.demoqa.pages.elements.LinksPage;
+import com.demoqa.pages.elements.TextBoxPage;
+import com.demoqa.pages.interactions.DroppablePage;
 import com.demoqa.pages.widgets.MenuPage;
 import com.demoqa.pages.widgets.SelectMenuPage;
 import com.demoqa.pages.widgets.SliderPage;
@@ -90,5 +94,37 @@ public class SidePanel extends BasePage {
     public ToolTipsPage clickOnToolTips() {
         clickWithJS(toolTips,0,400);
         return new ToolTipsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Buttons']")
+    WebElement buttons;
+
+    public ButtonsPage clickOnButtons() {
+        clickWithJS(buttons,0,300);
+        return new ButtonsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Droppable']")
+    WebElement droppable;
+
+    public DroppablePage clickOnDroppable() {
+        clickWithJS(droppable,0,600);
+        return new DroppablePage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBox;
+
+    public TextBoxPage clickOnTextBox() {
+        click(textBox);
+        return new TextBoxPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement brokenLinksImages;
+
+    public LinksPage clickOnBrokenLinksImages() {
+        clickWithJS(brokenLinksImages,0,400);
+        return new LinksPage(driver);
     }
 }
