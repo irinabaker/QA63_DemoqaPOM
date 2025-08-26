@@ -15,7 +15,7 @@ import java.time.Duration;
 public class BasePage {
 
     protected WebDriver driver;
-    JavascriptExecutor js;
+    public static JavascriptExecutor js;
     public static SoftAssertions softly;
     public static Actions actions;
 
@@ -109,13 +109,16 @@ public class BasePage {
             connection.setConnectTimeout(5000);
             connection.connect();
             if (connection.getResponseCode()>=400) {
-                System.out.println(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
+               System.out.println(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
+                softly.fail(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
             } else {
-                System.out.println(url + " - " + connection.getResponseMessage());
+               System.out.println(url + " - " + connection.getResponseMessage());
+                softly.assertThat(url + " - " + connection.getResponseMessage());
             }
         } catch (Exception e) {
             System.out.println(url + " - " + e.getMessage() + " ERROR occurred");
         }
+        softly.assertAll();
     }
 }
 

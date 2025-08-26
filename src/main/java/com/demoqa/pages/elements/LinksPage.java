@@ -38,4 +38,37 @@ public class LinksPage extends BasePage {
         }
         return this;
     }
+
+    @FindBy(tagName = "img")
+    List<WebElement> images;
+
+    public LinksPage checkBrokenImages() {
+        System.out.println("Total images on the page: " + images.size());
+
+        for (int i = 0; i < images.size(); i++) {
+            WebElement image = images.get(i);
+            String imageURL = image.getAttribute("src");
+            verifyLinks(imageURL);
+            //check display images using JavaScript executor
+            try {
+                boolean imageDisplayed = (Boolean) js.executeScript
+                        ("return (typeof  arguments[0].naturalWidth != undefined && arguments[0].naturalWidth>0);", image);
+                if (imageDisplayed) {
+                    System.out.println("DISPLAY - OK");
+                    System.out.println("**********************************");
+                    softly.assertThat(imageDisplayed);
+                } else {
+                    System.out.println("DISPLAY - BROKEN");
+                    System.out.println("***********************************");
+                    softly.fail("Broken image is " + imageURL);
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR occurred");
+            }
+            softly.assertAll();
+        }
+
+
+        return this;
+    }
 }

@@ -127,4 +127,12 @@ public class SidePanel extends BasePage {
         clickWithJS(brokenLinksImages,0,400);
         return new LinksPage(driver);
     }
+
+    @FindBy(xpath = "//span[.='Practice Form']")
+    WebElement practiceForm;
+
+    public PracticeFormPage clickOnForms() {
+        click(practiceForm);
+        return new PracticeFormPage(driver);
+    }
 }

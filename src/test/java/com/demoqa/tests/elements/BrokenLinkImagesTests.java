@@ -27,4 +27,9 @@ public class BrokenLinkImagesTests extends TestBase{
     public void checkBrokenLinksTest() {
         links.checkBrokenLinks();
     }
+
+    @Test
+    public void checkBrokenImages() {
+        links.checkBrokenImages();
+    }
 }
