@@ -49,4 +49,19 @@ public class TextBoxPage extends BasePage {
         Assertions.assertEquals(permanent[1],current[1]);
         return this;
     }
+
+    @FindBy(id = "userName")
+    WebElement userName;
+    @FindBy(id = "userEmail")
+    WebElement userEmail;
+    @FindBy(id = "permanentAddress")
+    WebElement permanentAddress;
+
+    public TextBoxPage enterPersonalData(String name, String email, String address) {
+        typeWithJS(userName,name,0,600);
+        typeWithJS(userEmail,email,0,400);
+        type(currentAddress,address);
+        typeWithJS(permanentAddress,address,0,400);
+        return this;
+    }
 }

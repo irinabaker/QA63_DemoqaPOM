@@ -9,6 +9,7 @@ import com.demoqa.pages.alertsFrameWindows.IframePage;
 import com.demoqa.pages.alertsFrameWindows.NestedIframesPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class AlertsFrameWindowsTests extends TestBase {
@@ -34,6 +35,7 @@ public class AlertsFrameWindowsTests extends TestBase {
     }
 
     @Test
+    @Tag("demo")
     public void selectResultTest() {
         sidePanel.clickOnAlert();
         alerts.clickOnThirdButton()

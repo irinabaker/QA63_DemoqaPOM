@@ -5,6 +5,7 @@ import com.demoqa.pages.HomePage;
 import com.demoqa.pages.SidePanel;
 import com.demoqa.pages.widgets.SelectMenuPage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class SelectMenuTests extends TestBase {
@@ -19,6 +20,7 @@ public class SelectMenuTests extends TestBase {
     }
 
     @Test
+    @Tag("demo")
     public void oldStyleSelectMenuTest() {
         selectMenu.oldStyleSelect("Voilet")
                 .verifyColor();

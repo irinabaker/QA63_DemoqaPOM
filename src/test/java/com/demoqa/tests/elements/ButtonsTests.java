@@ -5,6 +5,7 @@ import com.demoqa.pages.HomePage;
 import com.demoqa.pages.SidePanel;
 import com.demoqa.pages.elements.ButtonsPage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class ButtonsTests extends TestBase {
@@ -18,6 +19,7 @@ public class ButtonsTests extends TestBase {
         new SidePanel(driver).clickOnButtons();
     }
 
+    @Tag("demo")
     @Test
     public void doubleClickTest() {
         buttons.doubleClick()

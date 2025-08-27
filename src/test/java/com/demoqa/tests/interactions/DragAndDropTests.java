@@ -5,6 +5,7 @@ import com.demoqa.pages.HomePage;
 import com.demoqa.pages.SidePanel;
 import com.demoqa.pages.interactions.DroppablePage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class DragAndDropTests extends TestBase {
@@ -19,6 +20,7 @@ public class DragAndDropTests extends TestBase {
     }
 
     @Test
+    @Tag("demo")
     public void dragMeTest() {
         droppable.dragMe()
                 .verifyDropped("Dropped!");
