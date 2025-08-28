@@ -25,13 +25,11 @@ public class ApplicationManager {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         WebDriverManager.safaridriver().setup();
-        WebDriverManager.edgedriver().setup();
 
         switch (browser) {
             case "chrome" -> driver = new ChromeDriver();
             case "safari" -> driver = new SafariDriver();
             case "firefox" -> driver = new FirefoxDriver();
-            case "edge" -> driver = new EdgeDriver();
         }
 
         WebDriverListener listener = new MyListener();
